@@ -1,0 +1,15 @@
+.todo-form {
+  display: flex;
+  flex-direction: column;
+
+  .__lable-title {
+    margin-bottom: 20px;
+    font-size: 34px;
+  }
+
+  .__input {
+    padding: 10px 15px;
+    max-width: 550px;
+    font-size: 18px;
+  }
+}

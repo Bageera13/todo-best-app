@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './todoForm.scss'
 
 export const TodoForm: React.FC = () => {
   const [title, setTitle] = useState<string>("");
@@ -14,13 +15,13 @@ export const TodoForm: React.FC = () => {
   };
 
   return (
-    <div>
-      <label className="todo-form__lable-title" htmlFor="title">
+    <div className="todo-form">
+      <label className="__lable-title" htmlFor="title">
         Введите название дела
       </label>
       <input
         id="title"
-        className="todo-form__input"
+        className="__input"
         value={title}
         onKeyPress={keyPressHandler}
         onChange={changeHandler}
