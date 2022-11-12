@@ -1,6 +1,8 @@
 .todo-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
 
   .__lable-title {
     margin-bottom: 20px;
@@ -9,7 +11,7 @@
 
   .__input {
     padding: 10px 15px;
-    max-width: 550px;
+    max-width: 1000px;
     font-size: 18px;
   }
 }
