@@ -17,23 +17,33 @@ function App() {
   };
 
   const onToggle = (id: number) => {
-    setTodos((prev) =>
-      prev.map((todo) => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed;
-        }
-        return todo;
-      }));
+    const preparedTodos = todos.map((item) => {
+      if (item.id === id) {
+        item.completed = !item.completed;
+      }
+      return item;
+    });
+    setTodos(preparedTodos);
   };
 
-  const onDelete = (id: number) => {
-    setTodos(prev => prev.filter(todo => todo.id !== id))
+  const onEdit = (id: number, title: string) => {
+    const preparedTodos = todos.map((item) => {
+      if (item.id === id) {
+        item.title = title;
+      }
+      return item;
+    });
+    setTodos(preparedTodos);
   }
+
+  const onDelete = (id: number) => {
+    setTodos((prev) => prev.filter((todo) => todo.id !== id));
+  };
 
   return (
     <>
       <TodoForm onAdd={onAdd} />
-      <TodoList todos={todos} onToggle={onToggle} onDelete={onDelete} />
+      <TodoList todos={todos} onToggle={onToggle} onDelete={onDelete} onEdit={onEdit} />
     </>
   );
 }
