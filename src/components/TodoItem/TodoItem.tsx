@@ -25,13 +25,17 @@ export const TodoItem = ({
     setDisabled((prev) => !prev);
   };
 
+  const handlerBtnEdit = () => {
+    handlerDisabled();
+    setEditTitle(todo.title)
+  }
+
   const changeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEditTitle(event.target.value);
   };
 
   const editTodo = () => {
     onEdit(todo.id, editTitle);
-    setEditTitle(todo.title);
     handlerDisabled();
   };
 
@@ -66,7 +70,7 @@ export const TodoItem = ({
         </span>
       </label>
       <div className="__btn-wrapper">
-        {todo.completed ? <></> : <IconButton><ModeEditIcon className="__edit-icon" onClick={handlerDisabled} /></IconButton>}
+        {todo.completed ? <></> : <IconButton><ModeEditIcon className="__edit-icon" onClick={handlerBtnEdit} /></IconButton>}
         {isDisabled ? <></> : <IconButton><ClearIcon className="__delete-icon" onClick={() => onDelete(todo.id)} /></IconButton>}
       </div>
     </li>
