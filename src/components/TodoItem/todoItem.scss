@@ -6,6 +6,7 @@
 }
 
 .todo {
+  min-height: 50px;
   display: flex;
   justify-content: space-between;
   margin-bottom: 15px;
@@ -39,15 +40,12 @@
     display: flex;
     align-items: center;
 
-    .__btn-edit {
-      @include btn-reset(16px);
-      margin-right: 30px;
-      background-image: url("../../img/edit-icon.svg");
+    .__edit-icon {
+      font-size: 35px;
     }
 
-    .__btn-delete {
-      @include btn-reset(18px);
-      background-image: url("../../img/delete-icon.svg");
+    .__delete-icon {
+      font-size: 35px;
     }
   }
 }

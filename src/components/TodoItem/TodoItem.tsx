@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import { ITodo } from "../../interfaces/ITodo";
 import "./todoItem.scss";
+import { IconButton, Checkbox } from '@mui/material';
+import ClearIcon from '@mui/icons-material/Clear';
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
 
 type PropsTodoItem = {
   todo: ITodo;
@@ -41,8 +44,7 @@ export const TodoItem = ({
   return (
     <li className="todo" key={todo.id}>
       <label className="__lable">
-        <input
-          type="checkbox"
+        <Checkbox
           disabled={isDisabled}
           className="__input-checkbox"
           checked={todo.completed}
@@ -64,8 +66,8 @@ export const TodoItem = ({
         </span>
       </label>
       <div className="__btn-wrapper">
-        {todo.completed ? <></> : <button className="__btn-edit" onClick={handlerDisabled} />}
-        <button className="__btn-delete" onClick={() => onDelete(todo.id)} />
+        {todo.completed ? <></> : <IconButton><ModeEditIcon className="__edit-icon" onClick={handlerDisabled} /></IconButton>}
+        {isDisabled ? <></> : <IconButton><ClearIcon className="__delete-icon" onClick={() => onDelete(todo.id)} /></IconButton>}
       </div>
     </li>
   );

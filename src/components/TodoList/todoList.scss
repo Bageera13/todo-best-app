@@ -1,6 +1,13 @@
-.todo-list {
-  margin: 0 auto;
-  padding: 0 15px;
-  max-width: 1170px;
-  list-style: none;
+.--paper{
+  width: 80%;
+  margin: 15px auto;
+  padding: 20px 30px;
+
+
+  .todo-list {
+    margin: 0 auto;
+    padding: 0 15px;
+    max-width: 1170px;
+    list-style: none;
+  }
 }
