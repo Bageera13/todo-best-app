@@ -7,33 +7,36 @@ import { ITodo } from "./interfaces/ITodo";
 
 function App() {
   const [todos, setTodos] = useState<ITodo[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios.get('https://jsonplaceholder.typicode.com/todos')
-    .then((todos) => {setTodos(todos.data)})
-  }, [])
+    axios.get("https://jsonplaceholder.typicode.com/todos").then((todos) => {
+      setTodos(todos.data);
+      setLoading(false);
+    });
+  }, []);
 
   const deleteTodo = (id: number) => {
-    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
-  }
+    axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`);
+  };
 
   const postTodo = (todo: ITodo) => {
-    axios.post('https://jsonplaceholder.typicode.com/todos/posts', {
-      body: JSON.stringify({todo}),
+    axios.post("https://jsonplaceholder.typicode.com/todos/posts", {
+      body: JSON.stringify({ todo }),
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        "Content-type": "application/json; charset=UTF-8",
       },
-    })
-  }
+    });
+  };
 
   const putTodo = (todo: ITodo) => {
     axios.put(`https://jsonplaceholder.typicode.com/posts/${todo.id}`, {
-      body: JSON.stringify({todo}),
+      body: JSON.stringify({ todo }),
       headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+        "Content-type": "application/json; charset=UTF-8",
       },
-    })
-  }
+    });
+  };
 
   const onAdd = (title: string) => {
     const newTodo: ITodo = {
@@ -77,6 +80,7 @@ function App() {
     <>
       <TodoForm onAdd={onAdd} />
       <TodoList
+        loading={loading}
         todos={todos}
         onToggle={onToggle}
         onDelete={onDelete}
